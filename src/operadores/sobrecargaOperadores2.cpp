@@ -87,9 +87,16 @@ public:
     int valor;
     // Constructor
     Sobrecargando(int v) : valor(v) {}
+
     // Sobrecarga del operador +=
     Sobrecargando& operator+=(const Sobrecargando& otra) {
         this->valor += otra.valor;
+        return *this;
+    }
+
+    // Sobrecarga del operador -=
+    Sobrecargando& operator-=(const Sobrecargando& otra) {
+        this->valor -= otra.valor;
         return *this;
     }
 };
@@ -121,6 +128,17 @@ int main(){
     obj1 += obj2;
 
     cout << "Nuevo valor de obj1 despues de obj1 += obj2: " << obj1.valor << endl;
+    // Usando la nueva funcionalidad
+    Sobrecargando obj3(7);
+    Sobrecargando obj4(3);
+
+    cout << "Valor original obj3: " << obj3.valor << endl;
+    cout << "Valor original obj4: " << obj4.valor << endl;
+
+    // Restando obj4 de obj3 usando -=
+    obj3 -= obj4;
+
+    cout << "Nuevo valor de obj3 despues de obj3 -= obj4: " << obj3.valor << endl;
 
     return 0;
 }
